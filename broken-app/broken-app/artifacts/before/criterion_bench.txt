@@ -1,0 +1,33 @@
+=== Criterion BEFORE (broken implementations) ===
+Date: 2026-06-19
+Bench: cargo bench --bench criterion_broken
+
+Skipped:
+- sum_even_broken: UB off-by-one (abort under criterion warmup)
+- slow_fib_broken(32): exponential, >15 min (see baseline_bench.txt)
+
+Results (median):
+- slow_fib_broken/16:  ~5.9 us
+- slow_fib_broken/18:  ~16.3 us
+- slow_fib_broken/20:  ~41.6 us
+- slow_dedup_broken (10k dup): ~11.7 ms
+
+Compare AFTER (artifacts/after/criterion_bench.txt):
+- slow_fib(32):   ~64 ns
+- slow_dedup:     ~247 us
+
+Speedup examples:
+- fib: broken n=20 ~42us vs fixed n=32 ~64ns (~650x+; n=32 broken impractical)
+- dedup: ~11.7ms vs ~0.25ms (~47x)
+
+--- raw criterion output ---
+
+Benchmarking slow_fib_broken/16
+slow_fib_broken/16      time:   [5.6721 us 5.9018 us 6.0500 us]
+Benchmarking slow_fib_broken/18
+slow_fib_broken/18      time:   [15.350 us 16.325 us 17.231 us]
+Benchmarking slow_fib_broken/20
+slow_fib_broken/20      time:   [38.510 us 41.618 us 46.262 us]
+Benchmarking slow_dedup_broken/10k_dup
+slow_dedup_broken/10k_dup
+                        time:   [11.442 ms 11.725 ms 12.501 ms]

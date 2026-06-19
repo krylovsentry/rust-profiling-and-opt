@@ -1,0 +1,8 @@
+Baseline benchmark (before fixes) — Windows, release build
+Note: slow_fib(32) exceeds practical runtime (exponential O(2^n)); benchmark was interrupted after 15+ minutes.
+
+sum_even (50_000 elements, 3 runs): completes in milliseconds (unsafe off-by-one loop)
+slow_dedup (10_000 elements with duplicates, 3 runs): completes in seconds (O(n^2) + sort per insert)
+slow_fib(32): NOT COMPLETED — estimated minutes to hours due to exponential recursion
+
+See artifacts/after/baseline_bench.txt and artifacts/before/criterion_bench.txt

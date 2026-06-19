@@ -1,0 +1,43 @@
+﻿cargo :     Blocking waiting for file lock on artifact directory
+C:\Users\krylo\AppData\Local\Temp\ps-script-38990197-f5b8-46da-a123-53b5f0ed6650.ps1:93 знак:1
++ cargo bench --bench criterion 2>&1 | Out-File -FilePath "artifacts\cr ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (    Blocking wa...ifact directory:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+   Compiling broken-app v0.1.0 (C:\magic\code\rustprojectsyapracticum\rust-profiling-opt-practice\broken-app\broken-app
+)
+    Finished `bench` profile [optimized] target(s) in 2.12s
+     Running benches\criterion.rs (target\release\deps\criterion-3ebd2854e67b057d.exe)
+Gnuplot not found, using plotters backend
+Benchmarking sum_even
+Benchmarking sum_even: Warming up for 3.0000 s
+Benchmarking sum_even: Collecting 100 samples in estimated 5.1167 s (157k iterations)
+Benchmarking sum_even: Analyzing
+sum_even                time:   [32.087 ┬╡s 32.848 ┬╡s 33.863 ┬╡s]
+Found 9 outliers among 100 measurements (9.00%)
+  2 (2.00%) low severe
+  1 (1.00%) low mild
+  2 (2.00%) high mild
+  4 (4.00%) high severe
+
+Benchmarking slow_fib
+Benchmarking slow_fib: Warming up for 3.0000 s
+Benchmarking slow_fib: Collecting 100 samples in estimated 5.0003 s (74M iterations)
+Benchmarking slow_fib: Analyzing
+slow_fib                time:   [62.418 ns 64.188 ns 66.535 ns]
+Found 4 outliers among 100 measurements (4.00%)
+  1 (1.00%) low mild
+  1 (1.00%) high mild
+  2 (2.00%) high severe
+
+Benchmarking slow_dedup
+Benchmarking slow_dedup: Warming up for 3.0000 s
+Benchmarking slow_dedup: Collecting 100 samples in estimated 6.5883 s (20k iterations)
+Benchmarking slow_dedup: Analyzing
+slow_dedup              time:   [235.20 ┬╡s 246.70 ┬╡s 260.65 ┬╡s]
+Found 8 outliers among 100 measurements (8.00%)
+  3 (3.00%) low mild
+  1 (1.00%) high mild
+  4 (4.00%) high severe
+

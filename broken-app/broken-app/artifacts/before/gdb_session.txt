@@ -1,0 +1,42 @@
+=== GDB session: logical bug in average_positive ===
+Date: 2026-06-19T11:49:03Z
+Tool: GDB 16.3 (Linux, Docker)
+Example: examples/gdb_average_bug.rs (намеренно сломанная версия)
+
+## Цель
+
+Показать, что `average_positive` делит сумму на `values.len()`, а не на число положительных.
+
+Вход: `[-5, 5, 15]`  
+Ожидание: (5+15)/2 = **10.0**  
+Баг: 15/3 = **5.0**
+
+## Команды (воспроизведение)
+
+```bash
+cargo build --example gdb_average_bug
+gdb -batch \
+  -ex "break gdb_average_bug.rs:6" \
+  -ex "run" \
+  -ex "info locals" \
+  -ex "print values" \
+  -ex "print sum" \
+  -ex "print values.len()" \
+  -ex "continue" \
+  ./target/debug/examples/gdb_average_bug
+```
+
+## Вывод программы (без breakpoint)
+
+```
+average = 5
+```
+
+## Анализ в GDB
+
+На строке 6 (`let sum: i64 = values.iter().sum();`):
+- `values` = [-5, 5, 15]
+- `sum` = 15
+- `values.len()` = 3
+
+Деление `sum / values.len()` даёт 5.0 — неверно, т.к. -5 не должен участвовать в знаменателе.

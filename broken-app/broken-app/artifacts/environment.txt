@@ -1,0 +1,23 @@
+# Среда и инструменты
+
+OS: Windows 10 (x86_64-pc-windows-msvc)
+
+## Нативно (Windows)
+
+- `cargo test` → `after/cargo_test.txt`
+- `cargo +nightly miri test` → `after/miri.txt`
+- `cargo clippy -D warnings` → `after/clippy.txt`
+
+## Через Docker (postgres:16, Linux)
+
+| Инструмент | Скрипт | Артефакт |
+|------------|--------|----------|
+| Valgrind | `scripts/valgrind.sh` | `after/valgrind.txt` |
+| ASan / TSan | `scripts/sanitizers.sh` | `after/asan.txt`, `after/tsan.txt` |
+| perf + flamegraph | `scripts/profile.sh` | `plots/flamegraph.svg`, `after/perf_report.txt` |
+| GDB (до фикса) | `scripts/gdb-debug.sh` | `before/gdb_session.txt` |
+
+TSan в Docker Desktop: `setarch -R` (см. `scripts/tsan-only.sh`).
+
+Полный прогон: `bash scripts/docker-checks.sh` (privileged).
+

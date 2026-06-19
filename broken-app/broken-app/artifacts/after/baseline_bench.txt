@@ -1,0 +1,19 @@
+﻿cargo :    Compiling broken-app v0.1.0 (C:\magic\code\rustprojectsyapracticum\rust-profiling-opt-practice\broken-app\br
+oken-app)
+C:\Users\krylo\AppData\Local\Temp\ps-script-d02e995b-cdf1-4e23-932e-271d3e0284f0.ps1:93 знак:1
++ cargo bench --bench baseline 2>&1 | Out-File -FilePath "artifacts\bas ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (   Compiling br...app\broken-app):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+    Finished `bench` profile [optimized] target(s) in 0.32s
+     Running benches\baseline.rs (target\release\deps\baseline-8dfe6dc1985efad6.exe)
+sum_even: 14.7┬╡s
+slow_fib: 100ns
+slow_dedup: 171.8┬╡s
+sum_even: 35.6┬╡s
+slow_fib: 100ns
+slow_dedup: 142.1┬╡s
+sum_even: 19.2┬╡s
+slow_fib: 0ns
+slow_dedup: 141.1┬╡s

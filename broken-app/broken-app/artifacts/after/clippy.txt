@@ -1,0 +1,7 @@
+﻿cargo :     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.27s
+C:\Users\krylo\AppData\Local\Temp\ps-script-f96a3056-9e23-442c-ad27-a06ad64a9dc8.ps1:93 знак:1
++ cargo clippy -- -D warnings 2>&1 | Out-File -FilePath "artifacts\clip ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (    Finished `d...get(s) in 0.27s:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

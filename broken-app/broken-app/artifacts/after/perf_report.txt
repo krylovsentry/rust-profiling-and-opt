@@ -1,0 +1,74 @@
+[ perf record: Woken up 2 times to write data ]
+[ perf record: Captured and wrote 0.443 MB artifacts/perf.data (54 samples) ]
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 54  of event 'task-clock:ppp'
+# Event count (approx.): 54162486
+#
+# Overhead  Command          Shared Object      Symbol                                      
+# ........  ...............  .................  ............................................
+#
+    51.85%  profile_workloa  profile_workload   [.] broken_app::sum_even
+            |
+            ---broken_app::sum_even
+               profile_workload::main
+               std::sys::backtrace::__rust_begin_short_backtrace
+               std::rt::lang_start::_$u7b$$u7b$closure$u7d$$u7d$::h602f0a9184fc4230
+               _RNvNtCs75vJTIYSa2J_3std2rt19lang_start_internal
+               main
+               0x7e66c2b32ca7
+               __libc_start_main
+               _start
+
+    33.33%  profile_workloa  profile_workload   [.] hashbrown::map::HashMap<K,V,S,A>::insert
+            |
+            ---hashbrown::map::HashMap<K,V,S,A>::insert
+               broken_app::algo::slow_dedup
+               profile_workload::main
+               std::sys::backtrace::__rust_begin_short_backtrace
+               std::rt::lang_start::_$u7b$$u7b$closure$u7d$$u7d$::h602f0a9184fc4230
+               _RNvNtCs75vJTIYSa2J_3std2rt19lang_start_internal
+               main
+               0x7e66c2b32ca7
+               __libc_start_main
+               _start
+
+    12.96%  profile_workloa  profile_workload   [.] broken_app::algo::slow_fib
+            |
+            ---broken_app::algo::slow_fib
+               profile_workload::main
+               std::sys::backtrace::__rust_begin_short_backtrace
+               std::rt::lang_start::_$u7b$$u7b$closure$u7d$$u7d$::h602f0a9184fc4230
+               _RNvNtCs75vJTIYSa2J_3std2rt19lang_start_internal
+               main
+               0x7e66c2b32ca7
+               __libc_start_main
+               _start
+
+     1.85%  profile_workloa  [kernel.kallsyms]  [k] queue_work_on
+            |
+            ---queue_work_on
+               p9_fd_request
+               p9_client_rpc
+               p9_client_clunk
+               v9fs_dentry_release
+               __dentry_kill
+               dput
+               __fput
+               ____fput
+               task_work_run
+               do_exit
+               do_group_exit
+               __x64_sys_exit_group
+               x64_sys_call
+               do_syscall_64
+               entry_SYSCALL_64_after_hwframe
+
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

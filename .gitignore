@@ -1,0 +1,16 @@
+# macOS zip artifacts
+__MACOSX/
+.DS_Store
+._*
+
+# Archives (keep sources in repo, not zips)
+*.zip
+
+# IDE
+.idea/
+
+# Rust
+**/target/
+
+# Nested git repos (single root repo)
+**/.git/
